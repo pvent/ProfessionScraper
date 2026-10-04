@@ -1,0 +1,8 @@
+## Interface: 20503
+## Title: Profession Scraper
+## Notes: Scrapes professions and known recipes for Google Sheets export.
+## Author: Clunker
+## Version: 1.0
+## SavedVariables: ProfessionScraperDB
+
+ProfessionScraper.lua
