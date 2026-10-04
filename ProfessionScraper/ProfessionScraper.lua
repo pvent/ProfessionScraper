@@ -12,7 +12,6 @@ function ns.ScrapeActiveProfession()
     local realmName = GetRealmName()
     local profName, count = nil, 0
 
-    -- Ensure base structure exists
     ProfessionScraperDB[realmName] = ProfessionScraperDB[realmName] or {}
     ProfessionScraperDB[realmName][charName] = ProfessionScraperDB[realmName][charName] or {}
 
@@ -91,8 +90,8 @@ function ns.ScrapeActiveProfession()
         print(string.format("|cff00ff00[ProfessionScraper]|r Successfully scraped %d recipes for %s (%s). Opening export window...", count, profName, charName))
         ns.ShowExportWindow()
     else
-        print("|cffff0000[ProfessionScraper]|r No open profession window detected, or 0 recipes found. Make sure your profession window is fully open.")
-        ns.ShowExportWindow() -- Show window anyway so you can see existing entries
+        print("|cffff0000[ProfessionScraper]|r No open profession window detected, or 0 recipes found.")
+        ns.ShowExportWindow()
     end
 end
 
@@ -131,11 +130,9 @@ function ns.ShowExportWindow()
     end
 
     local textLines = {}
-    table.insert(textLines, "Character\tRealm\tProfession\tRecipe Name\tRecipe ID\tMaterials")
+    -- Header row removed completely
 
-    -- Iterate through database safely
     for realmName, chars in pairs(ProfessionScraperDB) do
-        -- Skip old flat string keys if any exist from legacy versions
         if type(chars) == "table" then
             for charName, profs in pairs(chars) do
                 if type(profs) == "table" then
