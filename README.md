@@ -7,3 +7,4 @@
 * **Known Issues & Gotchas:**
   * **API Split:** Enchanting utilizes the legacy `CraftFrame` (`GetNumCrafts()`, `GetCraftInfo()`) instead of the standard `TradeSkillFrame` API. Mixing these up returns zero entries.
   * **Global Table Namespace:** Data files loaded via `.toc` must register into globally accessible tables or shared addon namespaces (`ns`), or lookup failures will occur if keys differ from localized strings.
+![Uploading image.png…]()
