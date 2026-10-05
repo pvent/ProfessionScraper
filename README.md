@@ -1,9 +1,9 @@
-### ProfessionScraper
-* **Description:** Dynamically scans active profession windows on the 2.5.3 client (supporting standard trade skills and Enchanting's legacy `CraftFrame`) and cross-references them with cached recipe databases (such as Sigma's data structure).
+### RelicHelper
+* **Description:** Designed for hybrid classes (Druids, Shamans, Paladins) on the 2.5.3 client to track and auto-swap class-specific relics, idols, and totems dynamically based on active spells or abilities.
 * **How to Use:**
-  1. Place the folder into `Interface\AddOns\` ensuring the folder name and `.toc` match (`ProfessionScraper`).
-  2. Open any profession window in-game (e.g., Blacksmithing, Alchemy, or Enchanting).
-  3. Type `/pscrape` in chat to scan the open window and match known recipe IDs against the loaded cache.
+  1. Install the addon and load into the game client.
+  2. Configure preferences via addon settings or default slash commands to link specific relics to spell casts.
+  3. The addon listens for spell casting events to equip the optimal item on the fly.
 * **Known Issues & Gotchas:**
-  * **API Split:** Enchanting utilizes the legacy `CraftFrame` (`GetNumCrafts()`, `GetCraftInfo()`) instead of the standard `TradeSkillFrame` API. Mixing these up returns zero entries.
-  * **Global Table Namespace:** Data files loaded via `.toc` must register into globally accessible tables or shared addon namespaces (`ns`), or lookup failures will occur if keys differ from localized strings.
+  * **Combat Restrictions:** World of Warcraft security restrictions prevent automated equipment changes for certain slots if rules change mid-cast or while tainted, which can cause item-swapping errors during active combat encounters.
+  * **Latency / Spell Queueing:** Rapid spell queueing in TBC can occasionally outpace the server-side equipment swap response window, causing the relic swap to clip.
